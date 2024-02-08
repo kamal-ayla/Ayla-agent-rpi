@@ -1,0 +1,4 @@
+# List dirs/files that you want to exclude from a non-gateway build
+include/ayla/gateway.h
+include/ayla/gateway_interface.h
+gateway_interface.c

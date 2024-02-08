@@ -1,0 +1,10 @@
+#
+# ignore these in all directories
+#
+cscope.out
+tags
+tags.list
+#
+# ignore these just in this directory
+#
+/build

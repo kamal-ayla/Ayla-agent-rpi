@@ -1,0 +1,34 @@
+  This is a unit test programme for LAN OTA interfaces.
+
+  Unit test run introduction:
+    In rel directory
+      make
+    In int/lanota_test directory
+      make
+      make install
+    In rel/build/native/test directory
+      ./lanota_test
+
+  There is a default RSA-2048 bit private/public key pair 
+in files/rsa_private_key.pem and files/rsa_public_key.pem
+  And you can generate the RSA-2048 bit private/public key
+pair by yourself, and replace content of key pair file.
+  To generate a key pair:
+    openssl genrsa -out <RSA-2048_private_key> 2048
+  To get the public key to stdout for testing
+    openssl rsa -in ~/dsn/lanota-privkey -RSAPublicKey_out
+
+  These is a small original image files/org_small_image and 
+a large original image files/org_large_image to test LAN OTA,
+file content of these files can be modified arbitrarily to do 
+test.
+
+  Main loop of unit test can be modified to test one case, 
+take TEST_IMG_LARGE_IMG for example,
+      for (test_type = 0; 
+        test_type < TEST_IMG_TYPE_MAX; test_type++) {
+  ==> for (test_type = TEST_IMG_LARGE_IMG; 
+        test_type <= TEST_IMG_LARGE_IMG; test_type++) {
+  After modification, re-run unit test, then the final 
+encrypted LAN OTA image for TEST_IMG_LARGE_IMG can be got 
+in rel/build/native/test/files/lanota_image_header_payload.

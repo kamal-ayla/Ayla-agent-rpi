@@ -1,0 +1,4 @@
+# List dirs/files that you want to exclude from a non-gateway build
+gateway_internal.h
+include/app/gateway.h
+gateway.c

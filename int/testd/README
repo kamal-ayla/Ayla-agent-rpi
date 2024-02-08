@@ -1,0 +1,44 @@
+Makefile targets -
+
+Primary Steps -
+1. Copy testd dir to rel/app/
+2. Go to rel dir, execute make APP=testd; make APP=testd install.
+3. Go to rel/build/native/bin dir; execute devd.
+4. Go to rel/build/native/bin dir; execute appd.
+
+Note: If run devd/appd in /home/pi/ayla/bin on PI, please copy ext/* files to /home/pi/ayla/etc/files.
+
+
+Props API Tests Steps -
+1. Execute devd.
+2. Execute appd.
+3. Let appd run the test code till it runs out of any tests to execute.
+
+  The following steps can be performed manually or performed by python script
+automatically in dir py/linux/testdauto of repo module_automation.
+
+4. Execute file_down test from the developer site by setting the
+   file_down property.
+5. Execute file_up test first time by setting file_up_test property to 1 on
+   the developer site.
+6. Results till step 5 are saved in Ayla_device_client-eng* file in etc/files.
+7. Execute explicit_acks test by first setting Blue_LED to a value and then
+   doing the same for Green_LED. Check the status codes for the datapoints
+   on the dev site to verify the behavior.
+8.  Execute file_down test from the developer site by setting the 
+   file_down property the second time, to test recovery.
+9.  Execute explicit_acks test for Green_LED the second time, to test recovery
+10. Execute file_up test second time by setting file_up_test property to 1
+   on the developer site, to test recovery.
+11. Execute callback tests by setting input property to 900. This has to be
+	done fourth times to run all test cases.
+    After the first attempt make sure that devd reconnects to ADS.
+12. Execute batch_hold test, set batch_hold to 1, then set cmd property
+   to ‘cmdrecovery’, set batch_hold back to 0.
+13. Execute batch_hold test, set batch_hold to 1 the second time
+   to test recovery.
+14. Execute file_up test third time by setting file_up_test property to 1
+   on the developer site to test max file queue
+15. Execute file_up test fourth time by setting file_up_test property to 1
+   on the developer site to get test result in file_up property’s datapoint.
+16. Get test result from file_up property's latest datapoint.

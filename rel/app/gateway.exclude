@@ -1,0 +1,5 @@
+# List dirs/files that you want to exclude from a non-gateway build
+gatewayd
+bt_gatewayd
+zb_gatewayd
+multi_gatewayd
